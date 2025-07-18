@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Helvetica Font Implementation */
+@layer base {
+  body {
+    font-family: 'Helvetica', 'Helvetica Neue', 'Arial', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    cursor: none;
+  }
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Remove default margins and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Focus Styles */
+:focus {
+  outline: 2px solid rgba(0, 0, 0, 0.8);
+  outline-offset: 2px;
+}
+
+/* Ensure crisp text rendering */
+.font-helvetica {
+  font-family: 'Helvetica', 'Helvetica Neue', 'Arial', sans-serif;
+  font-feature-settings: 'kern' 1;
+  text-rendering: optimizeLegibility;
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(0, 0, 0, 0.1);
+  color: #000;
+}
+
+::-moz-selection {
+  background: rgba(0, 0, 0, 0.1);
+  color: #000;
+}
+
+/* Smooth transitions */
+a, button, .cursor-pointer, .project-card {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Mobile Touch Optimization */
+@media (max-width: 768px) {
+  /* Larger touch targets for mobile */
+  button, a, .cursor-pointer {
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Prevent zoom on input focus */
+  input, textarea, select {
+    font-size: 16px;
+  }
+  
+  /* Optimize text for mobile reading */
+  body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  
+  /* Smooth scrolling on mobile */
+  html {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Accessibility - Show cursor for keyboard navigation */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    cursor: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .text-gray-400 {
+    color: #666666;
+  }
+  
+  .text-gray-600 {
+    color: #333333;
+  }
+  
+  .border-gray-200 {
+    border-color: #999999;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  /* Keep light theme as default - no dark mode changes */
+}
+
+/* Print Styles */
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    cursor: auto !important;
+  }
+  
+  /* Hide interactive elements in print */
+  .cursor-pointer, button, .project-card {
+    cursor: auto !important;
+  }
+}
+
+/* Performance optimizations */
+.project-card {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Ensure proper stacking context */
+.fixed {
+  transform: translateZ(0);
+}
+
+/* Optimize font loading */
+@font-face {
+  font-family: 'Helvetica';
+  font-display: swap;
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 640px) {
+  /* Reduce motion on mobile for better performance */
+  .animate-pulse {
+    animation-duration: 3s;
+  }
+  
+  /* Optimize spacing for mobile */
+  .space-y-4 > * + * {
+    margin-top: 1rem;
+  }
+  
+  /* Better mobile typography */
+  h1, h2, h3 {
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+}
